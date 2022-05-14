@@ -17,11 +17,11 @@ export default class Player {
         document.addEventListener("keydown", function (event) {
             // console.log(event.keyCode == 37 || event.keyCode == 39  ?  this.counter++  : 0);
             if (event.keyCode == 37) {
-                console.log 1;
+                console.log (1);
             } else if (event.keyCode == 39) {
-                console.log 2;
+                console.log (2);
             } else {
-                console.log 0;
+                console.log (0);
             }
         });
     }

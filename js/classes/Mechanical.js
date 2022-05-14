@@ -1,9 +1,12 @@
 class Mechanical{
 
     #experience;
+    #timer;
+    count;
 
     constructor(){
         this.#experience = 0;
+        this.count = 0;
     }
 
     #difficulty(){
@@ -15,36 +18,49 @@ class Mechanical{
     }
 
     timerAndInstruccions(){
-        this.#followInstructions();
-        this.#counter();
+        let instructions = this.#followInstructions();
+        this.startOrStopTimer(false);
+
+        return instructions;
     }
 
     #followInstructions(){
-        let instructions = ['left', 'right'];
+        let directions = ['left', 'right'];
+        let instructions = [];
 
         for(let i = 1; i <= 5; i++){
             let random = Math.floor(Math.random() * 2);
-            console.log(instructions[random]);
+            instructions.push(directions[random]);
         }
 
+        return instructions;
     }
 
-    #counter(){
-        let count = 0;
-        let timer = setInterval(timeCounter, 1000);
+    startOrStopTimer(stoped){
+        if(stoped){
+            clearInterval(this.#timer);
+        }else{
+            this.#timer = setInterval(this.#timeCounter, 1000);
+            this.#timeCounter(stoped);
+        }
+    }
 
-        function timeCounter(){
-            if(count == 10){
-                clearInterval(timer);
-            }else{
-                count++;
-                console.log(count);
-            }
+    #timeCounter(stoped){
+        let count = 0;
+        if(this.count == 10 || stoped){
+            clearInterval(this.#timer);
+            this.count = 0;
+        }else if(this.count == 10){
+            stoped = true;
+            this.count = 0;
+        }else{
+            count++;
+            this.count = (this.count || 0) + count;
         }
     }
 
 }
 
-const mecanicas = new Mechanical();
-
-mecanicas.timerAndInstruccions();
+module.exports = {
+    Mechanical,
+}

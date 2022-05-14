@@ -58,5 +58,4 @@ export default class Mechanical {
             this.count = (this.count || 0) + count;
         }
     }
-
 }

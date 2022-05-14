@@ -1,5 +1,4 @@
-// import Mechanical from './Mechanical.js'
-
+import Mechanical from './Mechanical.js'
 export default class Player {
     score;
     lives;
@@ -25,15 +24,8 @@ export default class Player {
             }
         });
     }
-    
+
     countButton() {
         this.#getPressedButton();
     }
 }
-
-const player = new Player('100', '3');
-
-// const mecanicas = new Mechanical();
-// mecanicas.timerAndInstruccions();
-
-

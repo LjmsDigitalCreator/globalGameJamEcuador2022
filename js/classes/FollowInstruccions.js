@@ -3,6 +3,11 @@ const PlayerModule = require("./Player");
 const Mechanical = MechanicalModule.Mechanical;
 const Player = PlayerModule.Player;
 
+// import Mechanical from "./Mechanical";
+// import Player from "./Player";
+
+const player = new Player();
+
 class FollowInstruccions extends Mechanical{
 
     instructions;
@@ -15,9 +20,9 @@ class FollowInstruccions extends Mechanical{
         this.instructions = this.timerAndInstruccions(stoped);
     }
 
-    // noName(){
-        
-    // }
+    noName(){
+        console.log(player.counter);
+    }
 
 }
 

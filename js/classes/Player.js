@@ -1,38 +1,38 @@
-const MechanicalModule  = require('./Mechanical')
-const Mechanical = MechanicalModule.Mechanical();
-class Player {
+// import Mechanical from './Mechanical.js'
+
+export default class Player {
     score;
     lives;
-    buttons;
+    counter;
 
-    constructor(score, lives, buttons) {
+    constructor(score, lives) {
         this.score = score;
         this.lives = lives;
-        this.buttons = buttons;
+        this.counter = 0;
+        this.countButton();
     }
 
-    #controllers(buttons) {
-        console.log(`those are my buttons ${buttons}`)
+    #getPressedButton() {
+        //detect pressed Key
+        document.addEventListener("keydown", function (event) {
+            // console.log(event.keyCode == 37 || event.keyCode == 39  ?  this.counter++  : 0);
+            if (event.keyCode == 37) {
+                console.log 1;
+            } else if (event.keyCode == 39) {
+                console.log 2;
+            } else {
+                console.log 0;
+            }
+        });
     }
-
-    getController() {
-        this.#controllers(this.buttons)
+    countButton() {
+        this.#getPressedButton();
     }
 }
 
-// const player = new Player('100', '3', );
-const mecanicas = mechanical;
+const player = new Player('100', '3');
 
-mecanicas.timerAndInstruccions();
+// const mecanicas = new Mechanical();
+// mecanicas.timerAndInstruccions();
 
-// document.addEventListener("keyup", function (event) {
-//     switch (event.keyCode) {
-//         case 37:
-//             console.log('Izquierda')
-//             break;
 
-//         case 39:
-//             console.log('Derecha')
-//             break;
-//     }
-// });

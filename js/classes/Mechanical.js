@@ -1,50 +1,50 @@
-class Mechanical{
+export default class Mechanical {
 
     #experience;
 
-    constructor(){
+    constructor() {
         this.#experience = 0;
     }
 
-    #difficulty(){
-        if(this.#experience > 3){
+    #difficulty() {
+        if (this.#experience > 3) {
             return 8;
-        }else{
+        } else {
             return 4;
         }
     }
 
-    timerAndInstruccions(){
+    timerAndInstruccions() {
         this.#followInstructions();
         this.#counter();
     }
 
-    #followInstructions(){
+    #followInstructions() {
         let instructions = ['left', 'right'];
 
-        for(let i = 1; i <= 5; i++){
+        for (let i = 1; i <= 5; i++) {
             let random = Math.floor(Math.random() * 2);
-            console.log(instructions[random]);
+            return (instructions[random]);
         }
 
     }
 
-    #counter(){
+    #counter() {
         let count = 0;
         let timer = setInterval(timeCounter, 1000);
 
-        function timeCounter(){
-            if(count == 10){
+        function timeCounter() {
+            if (count == 10) {
                 clearInterval(timer);
-            }else{
+            } else {
                 count++;
-                console.log(count);
+                console.log(`${timer}  & ${count}`);
             }
         }
     }
 
 }
 
-const mecanicas = new Mechanical();
+// const mecanicas = new Mechanical();
 
-mecanicas.timerAndInstruccions();
+// mecanicas.timerAndInstruccions();

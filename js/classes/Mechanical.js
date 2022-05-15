@@ -1,4 +1,4 @@
-export default class Mechanical {
+class Mechanical {
 
     #experience;
     #timer;
@@ -58,4 +58,8 @@ export default class Mechanical {
             this.count = (this.count || 0) + count;
         }
     }
+}
+
+module.exports = {
+    Mechanical,
 }

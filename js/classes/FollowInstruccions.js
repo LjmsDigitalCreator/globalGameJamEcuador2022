@@ -1,14 +1,5 @@
-const MechanicalModule = require("./Mechanical");
-const PlayerModule = require("./Player");
-const Mechanical = MechanicalModule.Mechanical;
-const Player = PlayerModule.Player;
-
-// import Mechanical from "./Mechanical";
-// import Player from "./Player";
-
-const player = new Player();
-
-class FollowInstruccions extends Mechanical{
+import Mechanical from "./Mechanical.js";
+export default class FollowInstruccions extends Mechanical{
 
     instructions;
 
@@ -25,10 +16,3 @@ class FollowInstruccions extends Mechanical{
     }
 
 }
-
-const follow = new FollowInstruccions();
-
-follow.startGame();
-setTimeout(()=>{
-    follow.startOrStopTimer(true);
-}, 10000)

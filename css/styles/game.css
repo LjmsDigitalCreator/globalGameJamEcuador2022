@@ -1,0 +1,332 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	letter-spacing: 1px;
+	font-family: 'Roboto Slab', serif;
+	font-weight: 400;
+	user-select: none;
+	overflow: hidden;
+	transition: 1s;
+	scroll-behavior: smooth;
+	color: #4d4d4d;
+	align-items: center;
+	justify-content: center;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+html{
+	width:  100%;
+	height: 100%;
+}
+body{
+	width:  100%;
+	height: 100%;
+	display: flex;
+	background-color: #000;
+}
+main{
+	width:  100%;
+	height: 100%;
+	padding: 10px;
+	max-width: 180vh;
+	display: flex;
+
+}
+article{
+	width:  100%;
+	padding-top: 56.25%;
+	position: relative;
+}
+section{
+	width:  100%;
+	height: 100%;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+section div.frame{
+	display: flex;
+	flex-flow: column;
+	position: relative;
+}
+
+section div.frame aside:nth-of-type(1){
+	width: 100%;
+	height: 20px;
+	display: flex;
+	padding: 5px;
+	justify-content: flex-end;
+}
+
+section div.frame aside:nth-of-type(1) svg{
+	width: auto;
+	height: 100%;
+	cursor: pointer;
+}
+
+section div.frame aside:nth-of-type(2){
+	width: 100%;
+	height: calc(100% - 20px);
+	padding: 10px;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	border-top: none;
+	background-color: #e6e6e6;
+}
+section div.frame aside:nth-of-type(2) div.screen00{
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+}
+section div.frame aside:nth-of-type(2) div.screen00 h1{
+	font-size: 300%;
+	font-weight: 900;
+}
+
+section div.frame aside:nth-of-type(2) div.screen00 div{
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+}
+
+section div.frame aside:nth-of-type(2) div.screen00 button{
+	width: 60%;
+	max-width: 250px;
+	border: 1px solid #4d4d4d;
+	padding: 5px 0;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+section div.frame aside:nth-of-type(2) div.screen00 button:nth-of-type(1){
+	background-color: #4d4d4d;
+	color: #e6e6e6;
+}
+
+section div.frame aside:nth-of-type(2) div.screen00 button:nth-of-type(2){
+	margin-top: 10px;
+	color: #4d4d4d;
+}
+
+section div.frame aside:nth-of-type(2) div.screen00 p{
+	font-size: 60%;
+}
+
+section div.frame aside:nth-of-type(2) div.screen01{
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+section div.frame aside:nth-of-type(2) div.screen01 div:nth-of-type(1){
+	width: 60%;
+	height: 100%;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+}
+
+section div.frame aside:nth-of-type(2) div.screen01 div:nth-of-type(1) figure:nth-of-type(1){
+	width: 100%;
+	height: 70%;
+	margin-top: 5%;
+	border-radius: 10px;
+	background: url('../../assets/sprites/00010.jpg');
+	background-size: cover;
+}
+
+section div.frame aside:nth-of-type(2) div.screen01 div:nth-of-type(1) h2{
+	font-weight: bold;
+	font-size: 250%;
+	color: #4848b3;
+}
+
+section div.frame aside:nth-of-type(2) div.screen01 div:nth-of-type(2){
+	width: 20%;
+	height: 100%;
+	flex-flow: column;
+	justify-content: space-around;
+}
+
+section div.frame aside:nth-of-type(2) div.screen01 div:nth-of-type(2) figure{
+	width: 100%;
+	padding-top: 56.25%;
+	margin-top: 50px;
+	background-color: #999;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+section div.frame aside:nth-of-type(2) div.screen01 div:nth-of-type(2) figure:nth-of-type(1){
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain, cover;
+}
+section div.frame aside:nth-of-type(2) div.screen01 div:nth-of-type(2) figure:nth-of-type(2){
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain, cover;
+}
+section div.frame aside:nth-of-type(2) div.screen01 div:nth-of-type(2) figure:nth-of-type(3){
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain, cover;
+}
+
+section.view01 div.frame aside:nth-of-type(3){
+	transition: 0.25s;
+	position: absolute;
+	margin: 20px;
+	left: calc(30% - 250px);
+	top:  calc(50% - 150px);
+	background-color: #e6e6e6;
+	justify-content: space-around;
+}
+
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(1){
+	width: 100%;
+	height: 30px;
+	display: flex;
+	justify-content: start;
+	background-color: #4d4d4d;
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(1) svg{
+	width: 30px;
+	height: 60%;
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(1) p{
+	color: #FFF;
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2){
+	width: 100%;
+	height: calc(100% - 30px);
+	background-color: #e6e6e6;
+	border: 2px solid #4d4d4d;
+	border-top: none;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) h2{
+	text-align: center;
+	margin-bottom: 10px;
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) ul{
+	height: 70px;
+	display: flex;
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) li{
+	width:  50px;
+	height: 50px;
+	margin: 5px;
+	border: 2px solid #999;
+	box-shadow: 0 10px #999;
+	border-radius: 10px;
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) li svg{
+	fill: #4d4d4d;
+}
+
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) li.good{
+	margin: 20px 5px 5px;
+	border: 2px solid #3A3;
+	box-shadow: 0 2px #3A3;
+}
+
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) li.good{
+	margin: 20px 5px 5px;
+	border: 2px solid #3A3;
+	box-shadow: 0 2px #3A3;
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) li.good svg{fill: #3A3;}
+
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) li.badd{
+	margin: 20px 5px 5px;
+	border: 2px solid #A33;
+	box-shadow: 0 2px #A33;
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) li.badd svg{fill: #A33;}
+
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) .popup:nth-of-type(3){
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) .popup:nth-of-type(3) div:nth-of-type(1){
+	width:  120px;
+	height: 120px;	
+	background-color: #4d4d4d;
+	position: relative;
+	border-radius: 10px;
+	box-shadow: 0 -10px #999;
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) .popup:nth-of-type(3) div:nth-of-type(1) .arrow{
+	height: 100%;
+	fill: none;
+	stroke: #e6e6e6;
+	stroke-width: 5px;
+	position: absolute;
+
+}
+section.view01 div.frame aside:nth-of-type(3) div.panel:nth-of-type(2) .popup:nth-of-type(3) div:nth-of-type(2){
+	width: 50%;
+	min-height: 50%;
+}	
+section.view01 div.frame aside:nth-of-type(3) div.lbar{
+	width: calc(100% - 60px);
+	height: 30px;
+	margin: 30px 0; 
+	background-color: #999;
+}
+section.view01 div.frame aside:nth-of-type(3) div.lbar figure{
+	width: 30px;
+	height: 100%;
+	background-color: #b3486b;	
+}
+
+
+/*VARIABLE VIEWS*/
+
+section.view00{ background-color: #999; }
+section.view01{ background-color: #a98ae6; }
+
+section.view00 div.frame{ width: 50%; height: 60%; }
+section.view01 div.frame{ width: 95%; height: 95%; }
+
+section.view00 div.frame aside:nth-of-type(1){background-color: #4d4d4d;}
+section.view00 div.frame aside:nth-of-type(2){border: 2px solid #4d4d4d;}
+
+section.view01 div.frame aside:nth-of-type(1){background-color: #4848b3;}
+section.view01 div.frame aside:nth-of-type(2){border: 2px solid #4848b3;}
+
+section.view00 div.screen00{ height: 100%; }
+section.view00 div.screen01{ height: 0; }
+section.view01 div.screen00{ height: 0; }
+section.view01 div.screen01{ height: 100%; }
+
+section.view01 div.screen01 div:nth-of-type(2) figure:nth-of-type(1){ background: url('../../assets/sprites/A_001.png'), url('../../assets/sprites/G2G-BG01.png');}
+section.view01 div.screen01 div:nth-of-type(2) figure:nth-of-type(2){ background: url('../../assets/sprites/B_001.png'), url('../../assets/sprites/G2G-BG02.png');}
+section.view01 div.screen01 div:nth-of-type(2) figure:nth-of-type(3){ background: url('../../assets/sprites/C_001.png'), url('../../assets/sprites/G2G-BG03.png');}
+
+section.view00 div.frame aside:nth-of-type(3).set00{ width: 0; height: 0; box-shadow: none;}
+section.view01 div.frame aside:nth-of-type(3).set00{ width: 0; height: 0; box-shadow: none;}
+section.view01 div.frame aside:nth-of-type(3).set01{ width: 500px; height: 300px; box-shadow: 0 6px 12px -3px #4d4d4d; }
+
+section.view01 div.frame aside:nth-of-type(3) div.pop00 div.popup{height: 0;}
+
+section.view01 div.frame aside:nth-of-type(3) div.pop01 div.popup:nth-of-type(1){height: auto;}
+section.view01 div.frame aside:nth-of-type(3) div.pop01 div.popup:not(:nth-of-type(1)){height: 0;}
+
+section.view01 div.frame aside:nth-of-type(3) div.pop02 div.popup:nth-of-type(2){height: auto;}
+section.view01 div.frame aside:nth-of-type(3) div.pop02 div.popup:not(:nth-of-type(2)){height: 0;}
+
+section.view01 div.frame aside:nth-of-type(3) div.pop03 div.popup:nth-of-type(3){height: auto;}
+section.view01 div.frame aside:nth-of-type(3) div.pop03 div.popup:not(:nth-of-type(3)){height: 0;}
+
+
+/*

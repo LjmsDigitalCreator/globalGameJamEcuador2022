@@ -9,7 +9,8 @@
 </head>
 <body>
 	<main>
-		<audio id="audio" src="../assets/sounds/chibi_bossa.mp3" autoplay loop></audio>
+		<audio id="audio" src="../assets/sounds/chibi_bossa.mp3" loop></audio>
+		<audio id="audioVoices" src="../assets/sounds/people_talking.mp3" loop></audio>
 		<article>
 			<section id="section" class="view00">
 				<div class="frame">
@@ -26,11 +27,16 @@
 								<button>Ver créditos</button>
 							</div>
 							<p>Versión 1.1.1</p>
+							<span></span>
 						</div>
-
 						<div class="screen01">
+							<span></span>
+							<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><style>.cls-1{fill:none;}.cls-2{fill:#fff;}</style></defs><path class="cls-1" d="M1048.87-244.28h100v100h-100Z" transform="translate(-1048.87 244.28)"/><path class="cls-2" d="M1119.71-200.53v-14.58a4.19,4.19,0,0,0-4.17-4.17h-50a4.19,4.19,0,0,0-4.17,4.17v41.67a4.18,4.18,0,0,0,4.17,4.16h50a4.18,4.18,0,0,0,4.17-4.16V-188l16.66,16.67v-45.83Z" transform="translate(-1048.87 244.28)"/></svg>
+							<h3>Conectando videollamada...</h3>
+						</div>
+						<div class="screen02">
 							<div>
-								<h2>GameJam Quito 2022</h2>
+								<h2>GameJam Quito</h2>
 								<figure></figure>
 							</div>
 							<div>
@@ -105,24 +111,32 @@
 			</section>
 		</article>
 	</main>
+	<div id="modal" class="mod00">
+		<p>Este juego fue hecho con amor<br/>para la GameJam Quito 2022 ♥</p>
+		<button id="putFirstScreen">Continuar</button>
+	</div>
 
 	<script>
+		let putFirstScreen = document.getElementById("putFirstScreen");
+		
+		putFirstScreen.addEventListener("click", ()=>{
+			document.getElementById("modal").setAttribute('class', 'mod01');
+		});
+		
 		let audio = document.getElementById('audio');
+		let audioVoices = document.getElementById('audioVoices');
 		let startGame = document.getElementById('startGame');
 		let section = document.getElementById('section');
 		let aside = document.getElementById('aside');
+
 
 		audio.setAttribute('autoplay', true);
 
 		startGame.addEventListener('click', ()=>{
 			section.setAttribute('class', 'view01');
-			audio.setAttribute('src', './assets/sounds/people_talking.mp3"');
-			audio.setAttribute('autoplay', true);
-			audio.setAttribute('controls', true);
+			audio.pause();
+			audioVoices.play();
 		});
-
-
-
 	</script>
 
 </body>

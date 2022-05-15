@@ -1,18 +1,28 @@
 import Mechanical from "./Mechanical.js";
-export default class FollowInstruccions extends Mechanical{
+const Mechanicals = new Mechanical();
+export default class FollowInstruccions{
 
     instructions;
+    count;
 
     constructor(){
-        super();
     }
 
     startGame(stoped){
-        this.instructions = this.timerAndInstruccions(stoped);
+        this.instructions = Mechanicals.timerAndInstruccions(stoped);
+        console.log(this.instructions);
     }
 
-    noName(){
-        console.log(player.counter);
-    }
+    // stopGame(stoped){
+    //     Mechanicals.startOrStopTimer(stoped);
+    //     console.log(player.counter);
+    // }
+
+    // obtainCounter(){
+    //     setInterval(()=>{
+    //         this.count = Mechanicals.count;
+    //         return this.count;
+    //     }, 1000);
+    // }
 
 }

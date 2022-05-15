@@ -11,6 +11,11 @@
 	<main>
 		<audio id="audio" src="../assets/sounds/chibi_bossa.mp3" loop></audio>
 		<audio id="audioVoices" src="../assets/sounds/people_talking.mp3" loop></audio>
+		<audio id="callAudio" src="../assets/sounds/llamada_espera.mp3"></audio>
+		<audio id="hackerAudio" src="../assets/sounds/entrada_hacker.mp3"></audio>
+		<audio id="hackerMusic" src="../assets/sounds/hacker_menace.mp3" loop></audio>
+		<audio id="winMusic" src="../assets/sounds/triunfo.mp3"></audio>
+		<audio id="loseMusic" src="../assets/sounds/derrota.mp3"></audio>
 		<article>
 			<section id="section" class="view00">
 				<div class="frame">
@@ -24,17 +29,17 @@
 							<h1>BOOM</h1>
 							<div>
 								<button id="startGame">Unirse al GameJam</button>
-								<button>Ver créditos</button>
+								<button id="creditos">Ver créditos</button>
 							</div>
 							<p>Versión 1.1.1</p>
 							<span></span>
 						</div>
 						<div class="screen01">
 							<span></span>
-							<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><style>.cls-1{fill:none;}.cls-2{fill:#fff;}</style></defs><path class="cls-1" d="M1048.87-244.28h100v100h-100Z" transform="translate(-1048.87 244.28)"/><path class="cls-2" d="M1119.71-200.53v-14.58a4.19,4.19,0,0,0-4.17-4.17h-50a4.19,4.19,0,0,0-4.17,4.17v41.67a4.18,4.18,0,0,0,4.17,4.16h50a4.18,4.18,0,0,0,4.17-4.16V-188l16.66,16.67v-45.83Z" transform="translate(-1048.87 244.28)"/></svg>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path class="cls-2" d="M1119.71-200.53v-14.58a4.19,4.19,0,0,0-4.17-4.17h-50a4.19,4.19,0,0,0-4.17,4.17v41.67a4.18,4.18,0,0,0,4.17,4.16h50a4.18,4.18,0,0,0,4.17-4.16V-188l16.66,16.67v-45.83Z" transform="translate(-1048.87 244.28)"/></svg>
 							<h3>Conectando videollamada...</h3>
 						</div>
-						<div class="screen02">
+						<div id="gameScreen" class="screen02 face00">
 							<div>
 								<h2>GameJam Quito</h2>
 								<figure></figure>
@@ -46,17 +51,33 @@
 							</div>
 
 						</div>
+						<div class="screen03">
+                            <p>Ilustración:</p>
+                            <p>Vanessa Mendoza - TW: @KUMONOMIMI</p>
+                            <br/>
+                            <p>Diseño Gráfico:</p>
+                            <p>Arturo Rivas - IG: @asdfiuro</p>
+                            <br/>
+                            <p>Programación:</p>
+                            <p>David Astudillo - GitHub: Atkante</p>
+                            <p>George Ordoñez - GitHub: GeorgeOrd</p>
+                            <p>Larry Josué Mijares - GitHub: ljmsdigitalcreator</p>
+                            <br/>
+                            <p>Musicalización:</p>
+                            <p>Agustín Carrión - IG: @aguchocarrion</p>
+                            <img src="../assets/sprites/creditos.gif" width="auto" height="100px">
+                        </div>
 					</aside>
 					<aside id="aside" class="set00">
 						<div class="panel">
 							<svg fill="#FFF" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.07 17.01"><path d="M4.47,21H19.53a2,2,0,0,0,1.73-3L13.73,5a2,2,0,0,0-3.46,0L2.74,18A2,2,0,0,0,4.47,21ZM13,18H11V16h2Zm0-4H11V10h2Z" transform="translate(-2.47 -3.99)"/></svg>
-							<p>Detén el hackeo</p>
+							<p>Detén al hacker y salva tu comunidad</p>
 						</div>
 
-						<div class="panel pop00">
+						<div id="popup" class="panel pop00">
 							<div class="popup">
 								<h2>Completa la secuencia</h2>
-								<ul>
+								<ul id="rows">
 									<li class="good">
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 279.75 279.75"><path d="M465.2-349.19v-22.48h83.25a10,10,0,0,0,10-10v-73.25a10,10,0,0,0-10-10H465.2v-22.49a10,10,0,0,0-17.07-7.07L379-425.37a10,10,0,0,0,0,14.14l69.11,69.11A10,10,0,0,0,465.2-349.19Z" transform="translate(-325.33 558.17)"/></svg>
 									</li>
@@ -103,7 +124,7 @@
 								</div>
 							</div>
 
-							<div class="lbar"><figure></figure></div>
+							<div class="lbar"><figure id="chargeBar"></figure></div>
 
 						</div>
 					</aside>
@@ -116,27 +137,196 @@
 		<button id="putFirstScreen">Continuar</button>
 	</div>
 
-	<script>
+	<script type="module">
+
+		/* LOGIC */
+		import Player from '../js/classes/Player.js';
+		let player = new Player();
+
+		import FollowInstruccions from '../js/classes/FollowInstruccions.js';
+		let follow = new FollowInstruccions();
+		follow.startGame();
+
+		let rightCounter = 0;
+        let leftCounter = 0;
+        let right = 0;
+        let left = 0;
+
+		document.addEventListener("keydown", function (event) {
+            let count = 0;
+            if (event.keyCode == 37) {
+                right = 0;
+                left = 37;
+				verifyLeftRight();
+            } else if (event.keyCode == 39) {
+                right = 39;
+                left = 0;
+				verifyLeftRight();
+            } else {
+                return (rightCounter + leftCounter);
+            }
+        });
+
+		let rows = document.getElementById('rows');
+		function firstMiniGame(){
+			rows.innerHTML = '';
+			for(let i = 0; i < follow.instructions.length; i++){
+				if(follow.instructions[i] == '37'){
+					rows.innerHTML += `
+						<li id='row${i}' >
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 279.75 279.75"><path d="M465.2-349.19v-22.48h83.25a10,10,0,0,0,10-10v-73.25a10,10,0,0,0-10-10H465.2v-22.49a10,10,0,0,0-17.07-7.07L379-425.37a10,10,0,0,0,0,14.14l69.11,69.11A10,10,0,0,0,465.2-349.19Z" transform="translate(-325.33 558.17)"/></svg>
+						</li>
+					`;
+				}else{
+					rows.innerHTML += `
+						<li id='row${i}'>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 279.75 279.75"><path d="M786.9-487.41v22.49H703.65a10,10,0,0,0-10,10v73.25a10,10,0,0,0,10,10H786.9v22.48A10,10,0,0,0,804-342.12l69.1-69.11a10,10,0,0,0,0-14.14L804-494.48A10,10,0,0,0,786.9-487.41Z" transform="translate(-647.03 558.17)"/></svg>
+						</li>
+					`;
+				}
+			}
+		}
+
+		let divChargeBar = document.getElementById('chargeBar');
+		function chargeBar(){
+			let width = 0;
+			let id = setInterval(frame, 1000);
+			function frame() {
+				if (width == 100) {
+					clearInterval(id);
+					gameOver();
+				} else {
+					width += 20;
+					divChargeBar.style.width = width + '%';
+				}
+			}
+		}
+
+		/* SCREENS */
+
 		let putFirstScreen = document.getElementById("putFirstScreen");
-		
+		let audio = document.getElementById('audio');
+
 		putFirstScreen.addEventListener("click", ()=>{
 			document.getElementById("modal").setAttribute('class', 'mod01');
+			audio.play();
 		});
 		
-		let audio = document.getElementById('audio');
+		let callAudio = document.getElementById('callAudio');
 		let audioVoices = document.getElementById('audioVoices');
 		let startGame = document.getElementById('startGame');
 		let section = document.getElementById('section');
 		let aside = document.getElementById('aside');
+		let gameScreen = document.getElementById('gameScreen');
+		let hackerAudio = document.getElementById('hackerAudio');
+		let popup = document.getElementById('popup');
+		let hackerMusic = document.getElementById('hackerMusic');
 
+		let winMusic = document.getElementById('winMusic');
+		let loseMusic = document.getElementById('loseMusic');
+		let creditos = document.getElementById('creditos');
 
-		audio.setAttribute('autoplay', true);
+		creditos.addEventListener('click',()=>{
+			section.setAttribute('class', 'view03');
+		});
+
+		let direcction = 0;
+		let winOrlose = 0;
+		function verifyLeftRight(){
+
+			let value = true;
+			
+			let row = document.getElementById(`row${direcction}`);
+
+			switch (follow.instructions[direcction]) {
+			case 37:
+				if(follow.instructions[direcction] == left){
+					row.setAttribute('class', 'good');
+					winOrlose++;
+				}else{
+					row.setAttribute('class', 'badd');
+					value = false;
+				}
+				break;
+			case 39:
+				if(follow.instructions[direcction] == right){
+					row.setAttribute('class', 'good');
+					winOrlose++;
+				}else{
+					row.setAttribute('class', 'badd');
+					value = false;
+				}
+				break;
+			default:
+				row.setAttribute('class', 'badd');
+				value = false;
+				break;
+			}
+
+			direcction++;
+			
+			if(direcction == follow.instructions.length){
+				document.removeEventListener("keydown", function (event) {});
+			}
+
+    	}
+
+		function gameOver(){
+			if(winOrlose == follow.instructions.length){
+				hackerMusic.pause();
+				winMusic.play();
+
+				aside.setAttribute('class', 'set00');
+				popup.setAttribute('class', 'panel pop00');
+				gameScreen.setAttribute('class', 'screen02 face02');
+				
+				setTimeout(()=>{
+					section.setAttribute('class', 'view03');
+				}, 5000);
+			}else{
+				hackerMusic.pause();
+				loseMusic.play();
+
+				aside.setAttribute('class', 'set00');
+				popup.setAttribute('class', 'panel pop00');
+				gameScreen.setAttribute('class', 'screen02 face03');
+
+				setTimeout(()=>{
+					section.setAttribute('class', 'view03');
+				}, 5000);
+			}
+		}
 
 		startGame.addEventListener('click', ()=>{
 			section.setAttribute('class', 'view01');
 			audio.pause();
-			audioVoices.play();
+			callAudio.play();
+
+			setTimeout(()=>{
+				section.setAttribute('class', 'view02');
+				audioVoices.play();
+
+				setTimeout(()=>{
+					gameScreen.setAttribute('class', 'screen02 face01');
+					audioVoices.pause();
+					hackerAudio.play();
+
+					setTimeout(()=>{
+						aside.setAttribute('class', 'set01');
+						popup.setAttribute('class', 'panel pop01');
+						hackerMusic.play();
+						firstMiniGame();
+						chargeBar();
+						setTimeout(()=>{
+							gameOver();
+						}, 13000);
+					}, 4000);
+
+				}, 4000);
+
+			}, 6000);
 		});
+
 	</script>
 
 </body>

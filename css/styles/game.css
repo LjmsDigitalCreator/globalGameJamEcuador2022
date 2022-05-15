@@ -89,7 +89,6 @@ section div.frame aside:nth-of-type(1){
 section div.frame aside:nth-of-type(1) svg{
 	width: auto;
 	height: 100%;
-	cursor: pointer;
 }
 
 section div.frame aside:nth-of-type(2){
@@ -141,14 +140,23 @@ section div.frame aside:nth-of-type(2) div.screen00 p{
 	font-size: 60%;
 }
 
+section div.frame aside:nth-of-type(2) div.screen01{
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+}
+
+section div.frame aside:nth-of-type(2) div.screen01 svg{
+	height: 40%;
+	fill: #486bb3;
+}
+
 section div.frame aside:nth-of-type(2) div.screen02{
 	width: 100%;
 	display: flex;
 	justify-content: space-around;
-}
-
-section div.frame aside:nth-of-type(2) div.screen02 svg{
-	fill: #486bb3;
 }
 
 section div.frame aside:nth-of-type(2) div.screen02{
@@ -170,7 +178,6 @@ section div.frame aside:nth-of-type(2) div.screen02 div:nth-of-type(1) figure:nt
 	height: 70%;
 	margin-top: 5%;
 	border-radius: 10px;
-	background-size: cover;
 }
 
 section div.frame aside:nth-of-type(2) div.screen02 div:nth-of-type(1) h2{
@@ -317,7 +324,7 @@ section.view02 div.frame aside:nth-of-type(3) div.lbar{
 	background-color: #999;
 }
 section.view02 div.frame aside:nth-of-type(3) div.lbar figure{
-	width: 30px;
+	width: 0%;
 	height: 100%;
 	background-color: #b3486b;	
 }
@@ -354,10 +361,37 @@ section.view02 div.screen00{ height: 0; }
 section.view02 div.screen01{ height: 0; }
 section.view02 div.screen02{ height: 100%; }
 
-section.view02 div.screen02 div:nth-of-type(1) figure:nth-of-type(1){ background: url('00010.jpg');}
-section.view02 div.screen02 div:nth-of-type(2) figure:nth-of-type(1){ background: url('C_001.png'), url('G2G-BG03.png');}
-section.view02 div.screen02 div:nth-of-type(2) figure:nth-of-type(2){ background: url('B_001.png'), url('G2G-BG02.png');}
-section.view02 div.screen02 div:nth-of-type(2) figure:nth-of-type(3){ background: url('A_001.png'), url('G2G-BG01.png');}
+section.view02 div.face00 div:nth-of-type(1) figure:nth-of-type(1){ background: url('../../assets/sprites/00010.jpg');}
+section.view02 div.face00 div:nth-of-type(1) figure:nth-of-type(1){ background-repeat: no-repeat;}
+section.view02 div.face00 div:nth-of-type(1) figure:nth-of-type(1){ background-position: center;}
+section.view02 div.face00 div:nth-of-type(1) figure:nth-of-type(1){ background-size: cover;}
+section.view02 div.face00 div:nth-of-type(2) figure:nth-of-type(1){ background: url('../../assets/sprites/C_001.png'), url('../../assets/sprites/G2G-BG03.png');}
+section.view02 div.face00 div:nth-of-type(2) figure:nth-of-type(2){ background: url('../../assets/sprites/B_001.png'), url('../../assets/sprites/G2G-BG02.png');}
+section.view02 div.face00 div:nth-of-type(2) figure:nth-of-type(3){ background: url('../../assets/sprites/A_001.png'), url('../../assets/sprites/G2G-BG01.png');}
+
+section.view02 div.face01 div:nth-of-type(1) figure:nth-of-type(1){ background: url('../../assets/sprites/D_002.gif'),url('../../assets/sprites/hack.png');}
+section.view02 div.face01 div:nth-of-type(1) figure:nth-of-type(1){ background-repeat: no-repeat;}
+section.view02 div.face01 div:nth-of-type(1) figure:nth-of-type(1){ background-position: center;}
+section.view02 div.face01 div:nth-of-type(1) figure:nth-of-type(1){ background-size: contain, cover;}
+section.view02 div.face01 div:nth-of-type(2) figure:nth-of-type(1){ background: url('../../assets/sprites/C_002.png'), url('../../assets/sprites/G2G-BG03.png');}
+section.view02 div.face01 div:nth-of-type(2) figure:nth-of-type(2){ background: url('../../assets/sprites/B_002.png'), url('../../assets/sprites/G2G-BG02.png');}
+section.view02 div.face01 div:nth-of-type(2) figure:nth-of-type(3){ background: url('../../assets/sprites/A_002.png'), url('../../assets/sprites/G2G-BG01.png');}
+
+section.view02 div.face02 div:nth-of-type(1) figure:nth-of-type(1){ background: url('../../assets/sprites/D_003.gif'),url('../../assets/sprites/hack.png');}
+section.view02 div.face02 div:nth-of-type(1) figure:nth-of-type(1){ background-repeat: no-repeat;}
+section.view02 div.face02 div:nth-of-type(1) figure:nth-of-type(1){ background-position: center;}
+section.view02 div.face02 div:nth-of-type(1) figure:nth-of-type(1){ background-size: contain, cover;}
+section.view02 div.face02 div:nth-of-type(2) figure:nth-of-type(1){ background: url('../../assets/sprites/C_003.png'), url('../../assets/sprites/G2G-BG03.png');}
+section.view02 div.face02 div:nth-of-type(2) figure:nth-of-type(2){ background: url('../../assets/sprites/B_003.png'), url('../../assets/sprites/G2G-BG02.png');}
+section.view02 div.face02 div:nth-of-type(2) figure:nth-of-type(3){ background: url('../../assets/sprites/A_003.png'), url('../../assets/sprites/G2G-BG01.png');}
+
+section.view02 div.face03 div:nth-of-type(1) figure:nth-of-type(1){ background: url('../../assets/sprites/D_001.gif'),url('../../assets/sprites/hack.png');}
+section.view02 div.face03 div:nth-of-type(1) figure:nth-of-type(1){ background-repeat: no-repeat;}
+section.view02 div.face03 div:nth-of-type(1) figure:nth-of-type(1){ background-position: center;}
+section.view02 div.face03 div:nth-of-type(1) figure:nth-of-type(1){ background-size: contain, cover;}
+section.view02 div.face03 div:nth-of-type(2) figure:nth-of-type(1){ background: url('../../assets/sprites/C_004.png'), url('../../assets/sprites/G2G-BG03.png');}
+section.view02 div.face03 div:nth-of-type(2) figure:nth-of-type(2){ background: url('../../assets/sprites/B_004.png'), url('../../assets/sprites/G2G-BG02.png');}
+section.view02 div.face03 div:nth-of-type(2) figure:nth-of-type(3){ background: url('../../assets/sprites/A_004.png'), url('../../assets/sprites/G2G-BG01.png');}
 
 section.view00 div.frame aside:nth-of-type(3).set00{ width: 0; height: 0; box-shadow: none;}
 section.view01 div.frame aside:nth-of-type(3).set00{ width: 0; height: 0; box-shadow: none;}
@@ -375,5 +409,30 @@ section.view02 div.frame aside:nth-of-type(3) div.pop02 div.popup:not(:nth-of-ty
 section.view02 div.frame aside:nth-of-type(3) div.pop03 div.popup:nth-of-type(3){height: auto;}
 section.view02 div.frame aside:nth-of-type(3) div.pop03 div.popup:not(:nth-of-type(3)){height: 0;}
 
+section.view00 div.screen00{ height: 100%; }
+section.view00 div.screen01{ height: 0; }
+section.view00 div.screen02{ height: 0; }
+section.view00 div.screen03{ height: 0; }
+
+section.view01 div.screen00{ height: 0; }
+section.view01 div.screen01{ height: 100%; }
+section.view01 div.screen02{ height: 0; }
+section.view01 div.screen03{ height: 0; }
+
+
+section.view02 div.screen00{ height: 0; }
+section.view02 div.screen01{ height: 0; }
+section.view02 div.screen02{ height: 100%; }
+section.view02 div.screen03{ height: 0; }
+
+
+section.view03 div.screen00{ height: 0; }
+section.view03 div.screen01{ height: 0; }
+section.view03 div.screen02{ height: 0; }
+section.view03 div.screen03{ height: 100%; }
+section.view03 div.frame aside:nth-of-type(3).set00{ width: 0; height: 0; box-shadow: none;}
+section.view03{ background-color: #a98ae6; }
+section.view03 div.frame aside:nth-of-type(1){background-color: #4848b3;}
+section.view03 div.frame aside:nth-of-type(2){border: 2px solid #4848b3;}
 
 /*

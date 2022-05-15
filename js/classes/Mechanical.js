@@ -1,7 +1,7 @@
-class Mechanical {
+export default class Mechanical {
 
     #experience;
-    #timer;
+    timer;
     count;
 
     constructor() {
@@ -19,13 +19,13 @@ class Mechanical {
 
     timerAndInstruccions() {
         let instructions = this.#followInstructions();
-        this.startOrStopTimer(false);
+        //this.startOrStopTimer(false);
 
         return instructions;
     }
 
     #followInstructions() {
-        let directions = ['left', 'right'];
+        let directions = [37, 39];
         let instructions = [];
 
         for (let i = 1; i <= 5; i++) {
@@ -38,9 +38,9 @@ class Mechanical {
 
     startOrStopTimer(stoped) {
         if (stoped) {
-            clearInterval(this.#timer);
+            clearInterval(this.timer);
         } else {
-            this.#timer = setInterval(this.#timeCounter, 1000);
+            this.timer = setInterval(this.#timeCounter, 1000);
             this.#timeCounter(stoped);
         }
     }
@@ -48,7 +48,7 @@ class Mechanical {
     #timeCounter(stoped) {
         let count = 0;
         if (this.count == 10 || stoped) {
-            clearInterval(this.#timer);
+            clearInterval(this.timer);
             this.count = 0;
         } else if (this.count == 10) {
             stoped = true;
@@ -58,8 +58,4 @@ class Mechanical {
             this.count = (this.count || 0) + count;
         }
     }
-}
-
-module.exports = {
-    Mechanical,
 }

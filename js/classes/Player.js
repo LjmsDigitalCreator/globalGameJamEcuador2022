@@ -5,9 +5,9 @@ export default class Player {
     lives;
     counter;
 
-    constructor(score, lives) {
-        this.score = score;
-        this.lives = lives;
+    constructor() {
+        this.score = 0;
+        this.lives = 3;
         this.counter = 0;
         this.countButton();
     }
@@ -15,22 +15,44 @@ export default class Player {
     #getPressedButton() {
         //detect pressed Key
         document.addEventListener("keydown", function (event) {
-            // console.log(event.keyCode == 37 || event.keyCode == 39  ?  this.counter++  : 0);
+             
             if (event.keyCode == 37) {
-                console.log (1);
+               let count = 0; 
+               this.counter =(this.counter || 0 ) + count;
+                console.log(this.counter++);
+
+                
+               
             } else if (event.keyCode == 39) {
-                console.log (2);
+                let count = 0; 
+                this.counter =(this.counter || 0 ) + count;
+                 console.log(this.counter++);
+  
             } else {
-                console.log (0);
+
+                return this.counter;
+               
             }
+           
+            
+
         });
+        
     }
+    
     countButton() {
         this.#getPressedButton();
+        
     }
+
+    
 }
 
-const player = new Player('100', '3');
+const player = new Player('100', '3',1);
+
+
+
+
 
 // const mecanicas = new Mechanical();
 // mecanicas.timerAndInstruccions();

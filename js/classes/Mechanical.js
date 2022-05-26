@@ -17,18 +17,18 @@ export default class Mechanical {
         }
     }
 
-    timerAndInstruccions() {
-        let instructions = this.#followInstructions();
+    timerAndInstruccions(difficulty) {
+        let instructions = this.#followInstructions(difficulty);
         //this.startOrStopTimer(false);
 
         return instructions;
     }
 
-    #followInstructions() {
+    #followInstructions(difficulty) {
         let directions = [37, 39];
         let instructions = [];
 
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 1; i <= difficulty; i++) {
             let random = Math.floor(Math.random() * 2);
             instructions.push(directions[random]);
         }

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html id="html">
 <head>
-<title>Lorem Ipsum</title>
+<title>Save the jam</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/styles/game.css">
 </head>
-<body>
+<body id="body">
 	<main>
 		<audio id="audio" src="../assets/sounds/chibi_bossa.mp3" loop></audio>
 		<audio id="audioVoices" src="../assets/sounds/people_talking.mp3" loop></audio>
@@ -144,15 +144,23 @@
 		let player = new Player();
 
 		import FollowInstruccions from '../js/classes/FollowInstruccions.js';
-		let follow = new FollowInstruccions();
-		follow.startGame();
+		var follow = new FollowInstruccions();
+		var difficulty = 5;
+
+		function setInstruccions(difficulty){
+			follow.startGame(difficulty);
+		}
+
+		setInstruccions(difficulty);
 
 		let rightCounter = 0;
         let leftCounter = 0;
         let right = 0;
         let left = 0;
 
-		document.addEventListener("keydown", function (event) {
+		let web = document.getElementById('body');
+
+		web.addEventListener("keydown", function (event) {
             let count = 0;
             if (event.keyCode == 37) {
                 right = 0;
@@ -171,6 +179,9 @@
 		function firstMiniGame(){
 			rows.innerHTML = '';
 			for(let i = 0; i < follow.instructions.length; i++){
+				if(i == 7){
+					rows.innerHTML += `<br>`;
+				}
 				if(follow.instructions[i] == '37'){
 					rows.innerHTML += `
 						<li id='row${i}' >
@@ -187,16 +198,21 @@
 			}
 		}
 
-		let divChargeBar = document.getElementById('chargeBar');
+		var divChargeBar = document.getElementById('chargeBar');
+		
+		function resetChargeBar(){
+			divChargeBar.style.width = '0%';
+		}
+		
 		function chargeBar(){
 			let width = 0;
 			let id = setInterval(frame, 1000);
 			function frame() {
-				if (width == 100) {
+				if (width >= 100) {
 					clearInterval(id);
-					gameOver();
+					//gameOver();
 				} else {
-					width += 20;
+					width += 35;
 					divChargeBar.style.width = width + '%';
 				}
 			}
@@ -230,13 +246,13 @@
 			section.setAttribute('class', 'view03');
 		});
 
-		let direcction = 0;
+		var direcction = 0;
 		let winOrlose = 0;
 		function verifyLeftRight(){
 
 			let value = true;
 			
-			let row = document.getElementById(`row${direcction}`);
+			var row = document.getElementById(`row${direcction}`);
 
 			switch (follow.instructions[direcction]) {
 			case 37:
@@ -266,7 +282,9 @@
 			direcction++;
 			
 			if(direcction == follow.instructions.length){
-				document.removeEventListener("keydown", function (event) {});
+				web.removeEventListener("keydown", function (event) {});
+				direcction = 0;
+				difficulty += 2;
 			}
 
     	}
@@ -297,6 +315,24 @@
 			}
 		}
 
+		function setRounds(countRounds){
+
+			let round = 1;
+			let id = setInterval(rounds, 5000);
+			function rounds() {
+				if (round >= countRounds) {
+					clearInterval(id);
+					gameOver();
+				} else {
+					round++;
+					setInstruccions(difficulty);
+					firstMiniGame();
+					resetChargeBar();
+					chargeBar();
+				}
+			}
+		}
+
 		startGame.addEventListener('click', ()=>{
 			section.setAttribute('class', 'view01');
 			audio.pause();
@@ -317,9 +353,7 @@
 						hackerMusic.play();
 						firstMiniGame();
 						chargeBar();
-						setTimeout(()=>{
-							gameOver();
-						}, 13000);
+						setRounds(3);
 					}, 4000);
 
 				}, 4000);

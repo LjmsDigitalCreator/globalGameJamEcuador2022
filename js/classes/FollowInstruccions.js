@@ -8,8 +8,8 @@ export default class FollowInstruccions{
     constructor(){
     }
 
-    startGame(stoped){
-        this.instructions = Mechanicals.timerAndInstruccions(stoped);
+    startGame(difficulty){
+        this.instructions = Mechanicals.timerAndInstruccions(difficulty);
         console.log(this.instructions);
     }
 
